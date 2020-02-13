@@ -1,0 +1,70 @@
+<form  method="POST" class="needs-validation main" novalidate>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+        <div class="navbar-multiline mr-auto">
+            <span class="navbar-brand" href="#0">Profile Editor</span>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->router->to('adminProfile') ?>">Profile</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $subtitle ?></li>
+                </ol>
+            </nav>
+        </div>
+        <button class="btn btn-primary">Save</button>
+    </nav>
+
+    <div class="container p-3">
+        <div class="row mb-3">
+            <?= $form->csrfField('noob') ?>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?= $form->field('fullname'); ?>
+                                <?= $form->field('email'); ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?= $form->field('name'); ?>
+                                <?= $form->field('phone'); ?>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?= $form->field('biography'); ?>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <?= $form->field('avatar'); ?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= $form->field('skin'); ?>
+                                <?= $form->field('gender'); ?>
+                                <?= $form->field('bdate'); ?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= $form->field('height'); ?>
+                                <?= $form->field('weight'); ?>
+                                <?= $form->field('bplace'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Address</h5>
+                        <?= $form->field('addr_street'); ?>
+                        <?= $form->field('addr_city'); ?>
+                        <?= $form->field('addr_state'); ?>
+                        <?= $form->field('addr_country'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

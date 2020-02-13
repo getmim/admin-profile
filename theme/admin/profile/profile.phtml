@@ -1,0 +1,59 @@
+<form  method="POST" class="needs-validation main" novalidate>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+        <div class="navbar-multiline mr-auto">
+            <span class="navbar-brand" href="#0">Profile Details Editor</span>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->router->to('adminProfile') ?>">Profile</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $subtitle ?></li>
+                </ol>
+            </nav>
+        </div>
+        <button class="btn btn-primary">Save</button>
+    </nav>
+
+    <div class="container p-3">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <?= $this->partial('profile/editor-sidebar') ?>
+            </div>
+            <div class="col-md-9">
+                <?= $form->csrfField('noob') ?>
+                <div class="card">
+                    <div class="card-body">
+                        <?php if($saved): ?>
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <strong>Success!</strong> Profile data successfully updated.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <?= $form->field('fullname') ?>
+                                <?= $form->field('gender') ?>
+                                <?= $form->field('weight') ?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= $form->field('avatar') ?>
+                                <?= $form->field('height') ?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= $form->field('bdate') ?>
+                                <?= $form->field('bplace') ?>
+                                <?= $form->field('skin') ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?= $form->field('biography') ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

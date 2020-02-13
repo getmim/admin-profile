@@ -1,0 +1,29 @@
+<?php
+    $menus = [
+        'Profile'    => [null,                      'adminProfileEditProfile'],
+        'Account'    => ['manage_profile_account',  'adminProfileEditAccount'],
+        'Education'  => [null,                      'adminProfileEditEducation'],
+        'Profession' => [null,                      'adminProfileEditProfession'],
+        'Contact'    => [null,                      'adminProfileEditContact'],
+        'Social'     => [null,                      'adminProfileEditSocial']
+    ];
+?>
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title text-truncate"><?= hs($profile->fullname) ?></h5>
+        <div class="text-truncate"><i class="fas fa-phone-square"></i> <?= hs($profile->phone) ?></div>
+        <div class="text-truncate"><i class="fas fa-envelope-square"></i> <?= hs($profile->email) ?></div>
+    </div>
+</div>
+<div class="list-group list-group-flush card mb-3">
+    <?php foreach($menus as $label => $menu): ?>
+        <?php
+            if($menu[0] && !$this->can_i->{$menu[0]})
+                continue;
+
+            $active = ( $menu[1] == $this->req->route->name ) ? ' active' : '';
+            $link   = $this->router->to($menu[1], ['id'=>$profile->id]);
+        ?>
+        <a href="<?= $link ?>" class="list-group-item list-group-item-action<?= $active ?>"><?= $label ?></a>
+    <?php endforeach; ?>
+</div>

@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+    <div class="navbar-multiline mr-auto">
+        <span class="navbar-brand" href="#0">Profile Education Editor</span>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminProfile') ?>">Profile</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $subtitle ?></li>
+            </ol>
+        </nav>
+    </div>
+    <form method="POST">
+        <?= $form->csrfField('noob') ?>
+        <span class="hidden"><?= $form->field('educations') ?></span>
+        <button class="btn btn-primary">Save</button>
+    </form>
+</nav>
+
+<div class="container p-3">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <?= $this->partial('profile/editor-sidebar') ?>
+        </div>
+        <div class="col-md-9">
+            <form class="card mb-3" id="edu-editor">
+                <div class="card-body">
+                    <?php if($saved): ?>
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <strong>Success!</strong> Profile educations successfully updated.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    <?php endif; ?>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <?= $lform->field('level') ?>
+                        </div>
+                        <div class="col-md-4">
+                            <?= $lform->field('year') ?>
+                        </div>
+                        <div class="col-md-4">
+                            <?= $lform->field('place') ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-secondary">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ul class="list-group list-group-flush card" id="edu-list"></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', e => {
+        new ListEditor({
+            editor: '#edu-editor',
+            list  : '#edu-list',
+            model : '#admin-profile-education-fld-educations',
+            items : {
+                title: 'level',
+                info : [
+                    { field: 'year',  icon: '<i class="fas fa-calendar"></i>',   title: 'Year' },
+                    { field: 'place', icon: '<i class="fas fa-university"></i>', title: 'Place' }
+                ],
+                action: {
+                    edit  : {title: 'Edit',   icon: '<i class="fas fa-pen-square"></i>'},
+                    remove: {title: 'Remove', icon: '<i class="fas fa-minus-square"></i>'}
+                }
+            }
+        })
+    }, false);
+</script>
