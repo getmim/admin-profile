@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-profile',
-    '__version' => '0.0.1',
+    '__version' => '0.0.2',
     '__git' => 'git@github.com:getmim/admin-profile.git',
     '__license' => 'MIT',
     '__author' => [
@@ -562,7 +562,8 @@ return [
                         'twitter' => 'twitter',
                         'instagram' => 'instagram',
                         'youtube' => 'youtube',
-                        'gplus' => 'gplus'
+                        'gplus' => 'gplus',
+                        'soundcloud' => 'soundcloud'
                     ],
                     'rules' => [
                         'required' => TRUE
