@@ -42,6 +42,10 @@ return [
             'AdminProfile\\Controller' => [
                 'type' => 'file',
                 'base' => 'modules/admin-profile/controller'
+            ],
+            'AdminProfile\\Library' => [
+                'type' => 'file',
+                'base' => 'modules/admin-profile/library'
             ]
         ],
         'files' => []
@@ -57,7 +61,7 @@ return [
             ],
             'adminProfileCreate' => [
                 'path' => [
-                    'value' => '/profile/create',
+                    'value' => '/profile/create'
                 ],
                 'method' => 'GET|POST',
                 'handler' => 'AdminProfile\\Controller\\Profile::create'
@@ -162,7 +166,7 @@ return [
                 'password' => [
                     'label' => 'Password',
                     'type' => 'password',
-                    'meter' => true,
+                    'meter' => TRUE,
                     'rules' => [
                         'length' => [
                             'min' => 6
@@ -193,7 +197,7 @@ return [
                     'type' => 'email',
                     'rules' => [
                         'required' => TRUE,
-                        'email' => true,
+                        'email' => TRUE,
                         'unique' => [
                             'model' => 'Profile\\Model\\Profile',
                             'field' => 'email',
@@ -225,7 +229,7 @@ return [
                     'label' => 'Public Email',
                     'type' => 'email',
                     'rules' => [
-                        'email' => true
+                        'email' => TRUE
                     ]
                 ],
                 'contact-phone' => [
@@ -289,7 +293,7 @@ return [
                     'type' => 'email',
                     'rules' => [
                         'required' => TRUE,
-                        'email' => true,
+                        'email' => TRUE,
                         'unique' => [
                             'model' => 'Profile\\Model\\Profile',
                             'field' => 'email',
@@ -351,20 +355,20 @@ return [
                     'label' => 'Height ( cm )',
                     'type' => 'number',
                     'rules' => [
-                        'numeric' => true 
+                        'numeric' => TRUE
                     ],
                     'filters' => [
-                        'integer' => true
+                        'integer' => TRUE
                     ]
                 ],
                 'weight' => [
                     'label' => 'Weight ( kg )',
                     'type' => 'number',
                     'rules' => [
-                        'numeric' => true 
+                        'numeric' => TRUE
                     ],
                     'filters' => [
-                        'integer' => true
+                        'integer' => TRUE
                     ]
                 ],
                 'skin' => [
@@ -403,7 +407,7 @@ return [
                     'label' => 'Educations',
                     'type' => 'textarea',
                     'rules' => [
-                        'json' => true 
+                        'json' => TRUE
                     ]
                 ]
             ],
@@ -421,21 +425,21 @@ return [
                         'Doktor' => 'Doktor'
                     ],
                     'rules' => [
-                        'required' => true 
+                        'required' => TRUE
                     ]
                 ],
                 'year' => [
                     'label' => 'Year',
                     'type' => 'month',
                     'rules' => [
-                        'required' => true 
+                        'required' => TRUE
                     ]
                 ],
                 'place' => [
                     'label' => 'Place',
                     'type' => 'text',
                     'rules' => [
-                        'required' => true 
+                        'required' => TRUE
                     ]
                 ]
             ],
@@ -444,7 +448,7 @@ return [
                     'label' => 'Professions',
                     'type' => 'textarea',
                     'rules' => [
-                        'json' => true 
+                        'json' => TRUE
                     ]
                 ]
             ],
@@ -457,14 +461,14 @@ return [
                         'DJ' => 'DJ'
                     ],
                     'rules' => [
-                        'required' => true 
+                        'required' => TRUE
                     ]
                 ],
                 'since' => [
                     'label' => 'Since',
                     'type' => 'month',
                     'rules' => [
-                        'required' => true 
+                        'required' => TRUE
                     ]
                 ]
             ],
@@ -513,20 +517,20 @@ return [
                     'label' => 'Height ( cm )',
                     'type' => 'number',
                     'rules' => [
-                        'numeric' => true 
+                        'numeric' => TRUE
                     ],
                     'filters' => [
-                        'integer' => true
+                        'integer' => TRUE
                     ]
                 ],
                 'weight' => [
                     'label' => 'Weight ( kg )',
                     'type' => 'number',
                     'rules' => [
-                        'numeric' => true 
+                        'numeric' => TRUE
                     ],
                     'filters' => [
-                        'integer' => true
+                        'integer' => TRUE
                     ]
                 ],
                 'skin' => [
@@ -545,7 +549,7 @@ return [
                     'label' => 'Socials',
                     'type' => 'textarea',
                     'rules' => [
-                        'json' => true 
+                        'json' => TRUE
                     ]
                 ]
             ],
@@ -561,17 +565,24 @@ return [
                         'gplus' => 'gplus'
                     ],
                     'rules' => [
-                        'required' => true 
+                        'required' => TRUE
                     ]
                 ],
                 'url' => [
                     'label' => 'URL',
                     'type' => 'url',
                     'rules' => [
-                        'required' => true,
-                        'url' => true 
+                        'required' => TRUE,
+                        'url' => TRUE
                     ]
                 ]
+            ]
+        ]
+    ],
+    'admin' => [
+        'objectFilter' => [
+            'handlers' => [
+                'profile' => 'AdminProfile\\Library\\Filter'
             ]
         ]
     ]
