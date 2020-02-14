@@ -41,13 +41,25 @@ class ProfileController extends \Admin\Controller
         $params = $this->getParams('Edit Profile Account');
         $params['saved'] = false;
 
-        $form              = new Form('admin.profile.account');
+        $form_name = module_exists('profile-auth')
+            ? 'admin.profile.account-password'
+            : 'admin.profile.account';
+
+        $form              = new Form($form_name);
         $params['form']    = $form;
         $params['profile'] = $profile;
         
         if(!($valid = $form->validate($profile)) || !$form->csrfTest('noob'))
             return $this->resp('profile/account', $params);
-        
+
+        if(isset($valid->password)){
+            if($valid->password){
+                $valid->password = password_hash($valid->password, PASSWORD_DEFAULT);
+            }else{
+                unset($valid->password);
+            }
+        }
+
         if(!Profile::set((array)$valid, ['id'=>$id]))
             deb(Profile::lastError());
 

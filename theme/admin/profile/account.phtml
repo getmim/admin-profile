@@ -37,6 +37,9 @@
                             </div>
                             <div class="col-md-6">
                                 <?= $form->field('phone') ?>
+                                <?php if(module_exists('profile-auth')): ?>
+                                    <?= $form->field('password') ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

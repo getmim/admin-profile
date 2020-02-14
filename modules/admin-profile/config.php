@@ -157,6 +157,19 @@ return [
                     'rules' => []
                 ]
             ],
+            'admin.profile.account-password' => [
+                '@extends' => ['admin.profile.account'],
+                'password' => [
+                    'label' => 'Password',
+                    'type' => 'password',
+                    'meter' => true,
+                    'rules' => [
+                        'length' => [
+                            'min' => 6
+                        ]
+                    ]
+                ]
+            ],
             'admin.profile.account' => [
                 'name' => [
                     'label' => 'Username',
