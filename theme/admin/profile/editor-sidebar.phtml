@@ -7,6 +7,9 @@
         'Contact'    => [null,                      'adminProfileEditContact'],
         'Social'     => [null,                      'adminProfileEditSocial']
     ];
+    $custom_menu = $this->config->adminProfile->sidebar ?? [];
+    foreach($custom_menu as $label => $opts)
+        $menus[$label] = (array)$opts;
 ?>
 <div class="card mb-3">
     <div class="card-body">
@@ -18,10 +21,13 @@
 <div class="list-group list-group-flush card mb-3">
     <?php foreach($menus as $label => $menu): ?>
         <?php
+            $active_route = $this->req->route->name;
+            if(isset($active_menu))
+                $active_route = $active_menu;
             if($menu[0] && !$this->can_i->{$menu[0]})
                 continue;
 
-            $active = ( $menu[1] == $this->req->route->name ) ? ' active' : '';
+            $active = ( $menu[1] == $active_route ) ? ' active' : '';
             $link   = $this->router->to($menu[1], ['id'=>$profile->id]);
         ?>
         <a href="<?= $link ?>" class="list-group-item list-group-item-action<?= $active ?>"><?= $label ?></a>
