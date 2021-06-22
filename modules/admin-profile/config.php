@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-profile',
-    '__version' => '0.1.0',
+    '__version' => '0.2.0',
     '__git' => 'git@github.com:getmim/admin-profile.git',
     '__license' => 'MIT',
     '__author' => [
@@ -328,6 +328,14 @@ return [
                         'upload' => TRUE
                     ]
                 ],
+                'cover' => [
+                    'label' => 'Cover',
+                    'type' => 'image',
+                    'form' => 'std-image',
+                    'rules' => [
+                        'upload' => TRUE
+                    ]
+                ],
                 'bdate' => [
                     'label' => 'Birth Date',
                     'type' => 'date',
@@ -486,6 +494,14 @@ return [
                     'form' => 'std-image',
                     'rules' => [
                         'required' => TRUE,
+                        'upload' => TRUE
+                    ]
+                ],
+                'cover' => [
+                    'label' => 'Cover',
+                    'type' => 'image',
+                    'form' => 'std-image',
+                    'rules' => [
                         'upload' => TRUE
                     ]
                 ],
