@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-profile',
-    '__version' => '0.2.0',
+    '__version' => '0.2.1',
     '__git' => 'git@github.com:getmim/admin-profile.git',
     '__license' => 'MIT',
     '__author' => [
@@ -167,11 +167,7 @@ return [
                     'label' => 'Password',
                     'type' => 'password',
                     'meter' => TRUE,
-                    'rules' => [
-                        'length' => [
-                            'min' => 6
-                        ]
-                    ]
+                    'rules' => []
                 ]
             ],
             'admin.profile.account' => [
