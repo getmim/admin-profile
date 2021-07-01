@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-profile',
-    '__version' => '0.2.1',
+    '__version' => '0.2.2',
     '__git' => 'git@github.com:getmim/admin-profile.git',
     '__license' => 'MIT',
     '__author' => [
@@ -470,7 +470,7 @@ return [
                 ],
                 'since' => [
                     'label' => 'Since',
-                    'type' => 'month',
+                    'type' => 'date',
                     'rules' => [
                         'required' => TRUE
                     ]
